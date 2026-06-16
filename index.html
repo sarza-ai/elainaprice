@@ -51,11 +51,11 @@
 
   h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 3.2rem;
+    font-size: 2.8rem;
     font-weight: 300;
     line-height: 1.0;
     color: #1A1612;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.3rem;
     letter-spacing: -0.01em;
   }
 
@@ -64,16 +64,33 @@
     color: #4A4540;
   }
 
-  .bio {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.7;
-    color: #4A4540;
-    margin-bottom: 2.4rem;
-    margin-top: 1.2rem;
+  .subtitle {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #9B6B4B;
+    margin-bottom: 1.4rem;
+    margin-top: 0.5rem;
   }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #1A1612;
+    margin-bottom: 1rem;
+  }
+
+  .bio {
+    font-size: 0.88rem;
+    line-height: 1.85;
+    color: #4A4540;
+    margin-bottom: 2rem;
+  }
+
+  .bio p { margin-bottom: 0.9rem; }
+  .bio p:last-child { margin-bottom: 0; }
 
   .nav-buttons {
     display: flex;
@@ -400,9 +417,17 @@
 
   <div class="content-panel">
 
-    <h1>Elaina<br><em>Price</em></h1>
+    <h1>Elaina <em>Price</em></h1>
+    <p class="subtitle">Property Visionary</p>
 
-    <p class="bio">Integrating 20 years of property law with three decades of aesthetic curation to realize a property's full potential.</p>
+    <p class="section-heading">Redefining Expertise in Real Estate</p>
+
+    <div class="bio">
+      <p>True insight into property demands more than transactional knowledge—it requires a mastery of both underlying structure and total environmental vision. For me, real estate doesn't stop at the boundary of a physical structure; it encompasses everything from the bedrock to the horizon.</p>
+      <p>With over twenty years of experience in complex commercial real estate—notably within the demanding sectors of oil and gas operations—I bring a deep understanding of surface use, mineral ownership, severed estates, and intricate title mechanics. This rigorous analytical foundation gives me a rare command over property assets that far exceeds standard industry boundaries.</p>
+      <p>Running parallel to this technical expertise is a decades-long creative endeavor in photography, interior rehabilitation, and landscape design. I do not separate these modes; I integrate them. This unique synergy allows me to analyze an asset from the ground up, navigating complex legal frameworks while executing the comprehensive interior and exterior curation needed to realize a property's full potential.</p>
+      <p>Whether executing new visions for my own portfolio or advising best-in-class industry operators, my standards remain unmatched.</p>
+    </div>
 
     <nav class="nav-buttons" aria-label="Site navigation">
       <button class="nav-btn" onclick="openPage('overview')">
