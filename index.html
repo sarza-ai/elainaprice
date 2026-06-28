@@ -5,6 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="theme-color" content="#ffffff">
 <title>Elaina Price</title>
+<meta name="description" content="Redefining Expertise in Real Estate">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Elaina Price">
+<link rel="canonical" href="https://www.elainaprice.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Elaina Price">
+<meta property="og:title" content="Elaina Price">
+<meta property="og:description" content="Redefining Expertise in Real Estate">
+<meta property="og:url" content="https://www.elainaprice.com/">
+<meta property="og:image" content="https://www.elainaprice.com/20210703_112800.jpg">
+<meta property="og:image:alt" content="Elaina Price">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Elaina Price">
+<meta name="twitter:description" content="Redefining Expertise in Real Estate">
+<meta name="twitter:image" content="https://www.elainaprice.com/20210703_112800.jpg">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231A1612'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='18' fill='%23ffffff' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -166,6 +188,7 @@
   }
 
   .subpage.open { display: block; }
+  .subpage:target { display: block; }
 
   .back-bar {
     position: sticky;
@@ -459,15 +482,15 @@
     </div>
 
     <nav class="nav-buttons" aria-label="Site navigation">
-      <button class="nav-btn" onclick="openPage('overview')">
+      <a class="nav-btn" href="#page-overview" onclick="openPage('overview');return false;">
         Expertise <span class="arrow">&rarr;</span>
-      </button>
-      <button class="nav-btn" onclick="openPage('testimonials')">
+      </a>
+      <a class="nav-btn" href="#page-testimonials" onclick="openPage('testimonials');return false;">
         Testimonials <span class="arrow">&rarr;</span>
-      </button>
-      <button class="nav-btn" onclick="openPage('connect')">
+      </a>
+      <a class="nav-btn" href="#page-connect" onclick="openPage('connect');return false;">
         Connect <span class="arrow">&rarr;</span>
-      </button>
+      </a>
     </nav>
 
     <div class="footer-strip">
@@ -481,7 +504,7 @@
 <!-- OVERVIEW -->
 <div id="page-overview" class="subpage">
   <div class="back-bar">
-    <button class="back-btn" onclick="closePage()">&#8592;&nbsp; Back</button>
+    <a class="back-btn" href="#" onclick="closePage();return false;">&#8592;&nbsp; Back</a>
   </div>
   <div class="sub-inner">
     <div class="sub-eyebrow">Expertise</div>
@@ -529,7 +552,7 @@
 <!-- TESTIMONIALS -->
 <div id="page-testimonials" class="subpage">
   <div class="back-bar">
-    <button class="back-btn" onclick="closePage()">&#8592;&nbsp; Back</button>
+    <a class="back-btn" href="#" onclick="closePage();return false;">&#8592;&nbsp; Back</a>
   </div>
   <div class="sub-inner">
     <div class="sub-eyebrow">Testimonials</div>
@@ -560,7 +583,7 @@
 <!-- CONNECT -->
 <div id="page-connect" class="subpage">
   <div class="back-bar">
-    <button class="back-btn" onclick="closePage()">&#8592;&nbsp; Back</button>
+    <a class="back-btn" href="#" onclick="closePage();return false;">&#8592;&nbsp; Back</a>
   </div>
   <div class="sub-inner">
     <div class="sub-eyebrow">Connect</div>
@@ -613,7 +636,7 @@
     </div>
     <div class="form-group">
       <label>Nature of Inquiry</label>
-      <select>
+      <select id="inq">
         <option value="" disabled selected>Select</option>
         <option>Property Advisory &amp; Title Analysis</option>
         <option>Interior Staging &amp; Curation</option>
@@ -624,7 +647,7 @@
     </div>
     <div class="form-group">
       <label>Message</label>
-      <textarea placeholder="Describe your project or inquiry…" autocomplete="off"></textarea>
+      <textarea id="msg" placeholder="Describe your project or inquiry…" autocomplete="off"></textarea>
     </div>
     <button class="btn-send" onclick="handleSubmit()">Send Inquiry</button>
     <p class="form-note">Responses within 48 hours.</p>
@@ -653,9 +676,112 @@
   function handleSubmit() {
     var name = document.getElementById('fn').value.trim();
     var email = document.getElementById('em').value.trim();
+    var inq = document.getElementById('inq').value;
+    var msg = document.getElementById('msg').value.trim();
     if (!name || !email) { alert('Please enter your name and email.'); return; }
-    alert('Thank you, ' + name + '. Your inquiry has been received. Elaina will be in touch within 48 hours.');
+    var subject = 'Inquiry from ' + name + (inq ? ' [' + inq + ']' : '');
+    var body = 'Name: ' + name + '\nEmail: ' + email +
+               '\nNature of Inquiry: ' + (inq || 'Not specified') +
+               '\n\n' + msg;
+    window.location.href = 'mailto:elaina.d.price@gmail.com' +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
   }
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.elainaprice.com/#website",
+      "url": "https://www.elainaprice.com/",
+      "name": "Elaina Price",
+      "description": "Redefining Expertise in Real Estate",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.elainaprice.com/#webpage",
+      "url": "https://www.elainaprice.com/",
+      "name": "Elaina Price",
+      "isPartOf": { "@id": "https://www.elainaprice.com/#website" },
+      "about": { "@id": "https://www.elainaprice.com/#elaina" },
+      "primaryImageOfPage": "https://www.elainaprice.com/20210703_112800.jpg",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.elainaprice.com/#ethos",
+      "name": "Ethos Properties",
+      "alternateName": "E & J Ventures",
+      "foundingDate": "2014",
+      "founder": { "@id": "https://www.elainaprice.com/#elaina" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.elainaprice.com/#elaina",
+      "name": "Elaina Price",
+      "jobTitle": "Principal and Co-Founder",
+      "image": "https://www.elainaprice.com/20210703_112800.jpg",
+      "url": "https://www.elainaprice.com/",
+      "email": "mailto:elaina.d.price@gmail.com",
+      "worksFor": { "@id": "https://www.elainaprice.com/#ethos" },
+      "knowsAbout": [
+        "Title Mechanics & Analytics",
+        "Severed Estates & Rights",
+        "Asset De-Risking",
+        "Interior Staging & Styling",
+        "Landscape & Environmental Vision",
+        "The Photographic Eye"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/elainadaeprice/",
+        "https://www.elainadaephotography.com",
+        "https://www.ebay.com/usr/elainadaecollective",
+        "https://www.youtube.com/@ElainaDaePhotography",
+        "https://x.com/kitty_kat95516"
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Areas of Expertise",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@type": "Service", "name": "Title Mechanics & Analytics", "description": "Navigating and untangling complex title histories to ensure absolute transactional security. What you cannot see matters just as much as what you can.", "provider": { "@id": "https://www.elainaprice.com/#elaina" } } },
+        { "@type": "ListItem", "position": 2, "item": { "@type": "Service", "name": "Severed Estates & Rights", "description": "Evaluating properties with split surface and mineral ownership to uncover hidden liabilities or latent value — honed over two decades of property law experience.", "provider": { "@id": "https://www.elainaprice.com/#elaina" } } },
+        { "@type": "ListItem", "position": 3, "item": { "@type": "Service", "name": "Asset De-Risking", "description": "Applying rigorous corporate legal discipline to analyze property investments from the ground up, protecting your equity before you reach the closing table.", "provider": { "@id": "https://www.elainaprice.com/#elaina" } } },
+        { "@type": "ListItem", "position": 4, "item": { "@type": "Service", "name": "Interior Staging & Styling", "description": "Translating structural spaces into compelling, high-end narratives that resonate visually and emotionally with prospective buyers.", "provider": { "@id": "https://www.elainaprice.com/#elaina" } } },
+        { "@type": "ListItem", "position": 5, "item": { "@type": "Service", "name": "Landscape & Environmental Vision", "description": "Understanding the scale, character, and orientation of land. Elaina's deep connection to the horizon informs how a property sits within its environment.", "provider": { "@id": "https://www.elainaprice.com/#elaina" } } },
+        { "@type": "ListItem", "position": 6, "item": { "@type": "Service", "name": "The Photographic Eye", "description": "Capturing the distinct soul of an environment through light and perspective — a skill honed through three decades behind the lens.", "provider": { "@id": "https://www.elainaprice.com/#elaina" } } }
+      ]
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": { "@id": "https://www.elainaprice.com/#elaina" },
+      "reviewBody": "Elaina consistently operates at an attorney level, demonstrating exceptional autonomy and rigorous legal analysis.",
+      "author": { "@type": "Person", "name": "Managing Partner & Executive Committee Member, Regional Law Firm" }
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": { "@id": "https://www.elainaprice.com/#elaina" },
+      "reviewBody": "Elaina operates with a level of precision and dedication that fundamentally elevates the firm's output.",
+      "author": { "@type": "Person", "name": "Founder & Managing Partner, Boutique & Pre-Eminent Oil & Gas Law Firm" }
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": { "@id": "https://www.elainaprice.com/#elaina" },
+      "reviewBody": "Her commitment to excellence is absolute, driven by the highest exacting standards.",
+      "author": { "@type": "Person", "name": "Equity Partner, Global Am Law 50 Firm" }
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": { "@id": "https://www.elainaprice.com/#elaina" },
+      "reviewBody": "[Elaina] earned the highest performance evaluation on the team, demonstrating unparalleled execution, rigorous asset oversight, and exceptional leadership.",
+      "author": { "@type": "Person", "name": "Vice President, Fortune 500 Midstream Energy Corporation" }
+    }
+  ]
+}
 </script>
 </body>
 </html>
