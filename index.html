@@ -192,36 +192,6 @@
   .subpage.open { display: block; }
   .subpage:target { display: block; }
 
-  .back-bar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: #fff;
-    border-bottom: 1px solid #E8E4DF;
-    padding: 0 1.6rem;
-    height: 52px;
-    display: flex;
-    align-items: center;
-  }
-
-  .back-btn {
-    background: none;
-    border: none;
-    font-family: 'Jost', sans-serif;
-    font-size: 0.62rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #9B6B4B;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0;
-    -webkit-tap-highlight-color: transparent;
-    min-height: 44px;
-  }
-
   .sub-inner {
     padding: 2.4rem 1.6rem 5rem;
     max-width: 720px;
@@ -457,12 +427,66 @@
     .sub-title { font-size: clamp(2.2rem, 4vw, 3.4rem); }
   }
 
+  /* ── HOME LOGO ── */
+  .home-logo {
+    position: fixed;
+    top: 0.9rem;
+    right: 0.9rem;
+    z-index: 400;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #FBF8F4;
+    border: 1px solid #E4DCD1;
+    box-shadow: 0 2px 10px rgba(26, 22, 18, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .home-logo:hover,
+  .home-logo:active {
+    transform: translateY(-1px) scale(1.05);
+    border-color: #9B6B4B;
+    box-shadow: 0 4px 16px rgba(26, 22, 18, 0.18);
+  }
+
+  .home-logo svg { width: 30px; height: 30px; display: block; }
+
+  @media (max-width: 760px) {
+    .sub-inner { padding-top: 3.9rem; }
+  }
+
   @media (min-width: 1100px) {
     .content-panel { padding: 6rem; }
+    .home-logo { top: 1.4rem; right: 1.4rem; width: 56px; height: 56px; }
+    .home-logo svg { width: 36px; height: 36px; }
   }
 </style>
 </head>
 <body>
+
+<a class="home-logo" href="#" title="Home" aria-label="Return to home page" onclick="goHome();return false;">
+  <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="#9B6B4B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 55 H57"/>
+      <path d="M27 55 V33 H51 V55"/>
+      <path d="M24 34 L39 20 L54 34"/>
+      <path d="M39 20 V15"/>
+      <path d="M12 55 V31 H27"/>
+      <path d="M9 32 L19 16 L29 32"/>
+      <path d="M19 16 V11"/>
+      <path d="M10 44 H27"/>
+      <path d="M10 44 V55"/>
+      <path d="M16 55 V47 H22 V55"/>
+      <path d="M16 35 H22 V42 H16 Z"/>
+      <path d="M31 38 H36 V46 H31 Z"/>
+      <path d="M42 38 H47 V46 H42 Z"/>
+    </g>
+  </svg>
+</a>
 
 <div class="landing">
 
@@ -510,9 +534,6 @@
 
 <!-- OVERVIEW -->
 <div id="page-overview" class="subpage">
-  <div class="back-bar">
-    <a class="back-btn" href="#" onclick="closePage();return false;">&#8592;&nbsp; Back</a>
-  </div>
   <div class="sub-inner">
     <div class="sub-eyebrow">Expertise</div>
     <h2 class="sub-title">Redefining Expertise<br><em>in Real Estate</em></h2>
@@ -558,9 +579,6 @@
 
 <!-- TESTIMONIALS -->
 <div id="page-testimonials" class="subpage">
-  <div class="back-bar">
-    <a class="back-btn" href="#" onclick="closePage();return false;">&#8592;&nbsp; Back</a>
-  </div>
   <div class="sub-inner">
     <div class="sub-eyebrow">Testimonials</div>
     <h2 class="sub-title">A Standard<br><em>Recognized by Peers</em></h2>
@@ -605,9 +623,6 @@
 
 <!-- PORTFOLIO -->
 <div id="page-portfolio" class="subpage">
-  <div class="back-bar">
-    <a class="back-btn" href="#" onclick="closePage();return false;">&#8592;&nbsp; Back</a>
-  </div>
   <div class="sub-inner">
     <div class="sub-eyebrow">Portfolio</div>
     <h2 class="sub-title">Curated<br><em>Properties</em></h2>
@@ -650,9 +665,6 @@
 
 <!-- CONNECT -->
 <div id="page-connect" class="subpage">
-  <div class="back-bar">
-    <a class="back-btn" href="#" onclick="closePage();return false;">&#8592;&nbsp; Back</a>
-  </div>
   <div class="sub-inner">
     <div class="sub-eyebrow">Connect</div>
     <h2 class="sub-title">Let's<br><em>Connect</em></h2>
@@ -683,9 +695,6 @@
 <!-- BLOG -->
 <!-- Main Blog Listing Page -->
 <div id="page-blog" class="subpage">
-  <div class="back-bar">
-    <a class="back-btn" href="#" onclick="closePage();return false;">&#8592;&nbsp; Back</a>
-  </div>
   <div class="sub-inner">
     <div class="sub-eyebrow">Blog</div>
     <div class="sub-rule"></div>
@@ -724,9 +733,6 @@
 
 <!-- Blog Post 1: Where it all Began - Connecticut -->
 <div id="page-blog-1" class="subpage">
-  <div class="back-bar">
-    <a class="back-btn" href="#" onclick="closeBlogPost();return false;">&#8592;&nbsp; Back</a>
-  </div>
   <div class="sub-inner">
     <h2 class="sub-title">Where it all Began: at Closing Tables in Connecticut</h2>
     <div class="sub-rule"></div>
@@ -755,9 +761,6 @@
 
 <!-- Blog Post 2: FSBO Transaction -->
 <div id="page-blog-2" class="subpage">
-  <div class="back-bar">
-    <a class="back-btn" href="#" onclick="closeBlogPost();return false;">&#8592;&nbsp; Back</a>
-  </div>
   <div class="sub-inner">
     <h2 class="sub-title">How I Bought My First Income-Producing Property Nearly a Decade Ago Through a FSBO Transaction</h2>
     <div class="sub-rule"></div>
@@ -839,9 +842,6 @@
 
 <!-- Blog Post 2: HOA vs Community Covenants -->
 <div id="page-blog-3" class="subpage">
-  <div class="back-bar">
-    <a class="back-btn" href="#" onclick="closeBlogPost();return false;">&#8592;&nbsp; Back</a>
-  </div>
   <div class="sub-inner">
     <h2 class="sub-title">HOA vs. Community Covenants: They're Not the Same Thing</h2>
     <div class="sub-rule"></div>
@@ -894,9 +894,6 @@
 <!-- Blog Post 4: Why Staging Matters -->
 <!-- Blog Post 5: Conservation -->
 <div id="page-blog-6" class="subpage">
-  <div class="back-bar">
-    <a class="back-btn" href="#" onclick="closeBlogPost();return false;">&#8592;&nbsp; Back</a>
-  </div>
   <div class="sub-inner">
     <h2 class="sub-title">A Neighbor with a Passion for Conservation</h2>
     <div class="sub-rule"></div>
@@ -921,9 +918,6 @@
 
 <!-- Blog Post 6: Rental Property Management -->
 <div id="page-blog-7" class="subpage">
-  <div class="back-bar">
-    <a class="back-btn" href="#" onclick="closeBlogPost();return false;">&#8592;&nbsp; Back</a>
-  </div>
   <div class="sub-inner">
     <h2 class="sub-title">Why I Chose to Manage My Own Rental Property</h2>
     <div class="sub-rule"></div>
@@ -948,9 +942,6 @@
 
 <!-- Blog Post 7: Sometimes the Best Real Estate Deal Is the One You Walk Away From -->
 <div id="page-blog-8" class="subpage">
-  <div class="back-bar">
-    <a class="back-btn" href="#" onclick="closeBlogPost();return false;">&#8592;&nbsp; Back</a>
-  </div>
   <div class="sub-inner">
     <h2 class="sub-title">Sometimes the Best Real Estate Deal Is the One You Walk Away From</h2>
     <div class="sub-rule"></div>
@@ -990,9 +981,6 @@
 
 <!-- Blog Post 9: A Lifelong Fascination with Real Estate -->
 <div id="page-blog-10" class="subpage">
-  <div class="back-bar">
-    <a class="back-btn" href="#" onclick="closeBlogPost();return false;">&#8592;&nbsp; Back</a>
-  </div>
   <div class="sub-inner">
     <h2 class="sub-title">A Lifelong Fascination with Real Estate</h2>
     <div class="sub-rule"></div>
@@ -1027,9 +1015,6 @@
 
 <!-- Blog Post 11: Your Lease Is Your Greatest Asset as a Landlord -->
 <div id="page-blog-11" class="subpage">
-  <div class="back-bar">
-    <a class="back-btn" href="#" onclick="closeBlogPost();return false;">&#8592;&nbsp; Back</a>
-  </div>
   <div class="sub-inner">
     <h2 class="sub-title">Your Lease Is Your Greatest Asset as a Landlord</h2>
     <div class="sub-rule"></div>
@@ -1064,9 +1049,6 @@
 
 <!-- Blog Post 12: The Shocking Amount of Money You Could Be Saving on Your Mortgage -->
 <div id="page-blog-12" class="subpage">
-  <div class="back-bar">
-    <a class="back-btn" href="#" onclick="closeBlogPost();return false;">&#8592;&nbsp; Back</a>
-  </div>
   <div class="sub-inner">
     <h2 class="sub-title">The Shocking Amount of Money You Could Be Saving on Your Mortgage</h2>
     <div class="sub-rule"></div>
@@ -1170,6 +1152,12 @@
       p.classList.remove('open');
     });
     document.body.style.overflow = '';
+  }
+
+  function goHome() {
+    closePage();
+    if (location.hash) history.replaceState(null, '', location.pathname);
+    window.scrollTo({ top: 0 });
   }
 
   function openBlogPost(num) {
