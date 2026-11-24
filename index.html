@@ -772,6 +772,16 @@
       </a>
     </div>
 
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #E8E4DF;">
+      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: #1A1612; margin: 0 0 0.6rem 0;">Get new posts by email</h3>
+      <p style="font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: #5A5049; margin: 0 0 1rem 0; line-height: 1.6;">Enter your email and each new post will arrive in your inbox.</p>
+      <form id="subscribe-form" onsubmit="return subscribeEmail(event)" style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
+        <input type="email" id="sub-email" required placeholder="Your email address" aria-label="Email address" style="flex: 1 1 220px; padding: 0.7rem 0.9rem; font-family: 'Cormorant Garamond', serif; font-size: 1rem; border: 1px solid #D9D2C9; background: #FFFFFF; color: #1A1612; border-radius: 2px;">
+        <input type="text" id="sub-website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0;">
+        <button type="submit" id="sub-btn" style="padding: 0.7rem 1.4rem; font-family: 'Cormorant Garamond', serif; font-size: 1rem; background: #9B6B4B; color: #FFFFFF; border: none; border-radius: 2px; cursor: pointer;">Subscribe</button>
+      </form>
+      <p id="sub-msg" role="status" style="font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: #5A5049; margin: 0.8rem 0 0 0; line-height: 1.6;"></p>
+    </div>
   </div>
 </div>
 
@@ -1700,6 +1710,41 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closePage();
   });
+
+  // Links in emails open a post directly, for example elainaprice.com/#blog-22
+  window.addEventListener('load', function() {
+    var m = location.hash.match(/^#(?:page-)?blog-(\d+)$/);
+    if (m && document.getElementById('page-blog-' + m[1])) openBlogPost(m[1]);
+  });
+
+  function subscribeEmail(e) {
+    e.preventDefault();
+    var btn = document.getElementById('sub-btn');
+    var msg = document.getElementById('sub-msg');
+    var emailInput = document.getElementById('sub-email');
+    btn.disabled = true;
+    msg.textContent = 'One moment...';
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: emailInput.value,
+        website: document.getElementById('sub-website').value
+      })
+    })
+      .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, d: d }; }); })
+      .then(function(x) {
+        if (x.ok) {
+          msg.textContent = 'Almost done! Check your inbox for a message to confirm your subscription.';
+          emailInput.value = '';
+        } else {
+          msg.textContent = x.d.error || 'Something went wrong. Please try again.';
+        }
+      })
+      .catch(function() { msg.textContent = 'Something went wrong. Please try again.'; })
+      .then(function() { btn.disabled = false; });
+    return false;
+  }
 
   function handleSubmit() {
     var name = document.getElementById('fn').value.trim();
