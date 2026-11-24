@@ -10,7 +10,7 @@ function welcomeHtml(email, token) {
     '<p>No matter where my work takes me, words have been and will always be woven into what I do. This space is simply a quiet corner to let those thoughts breathe, wherever they happen to lead.</p>' +
     '<p>Here\'s to new beginnings, good light, and great spaces.</p>' +
     '<p style="margin-bottom:4px;">Warmly,</p>' +
-    '<img src="' + SITE + '/elaina-signature.png" alt="Elaina Price" width="220" style="display:block;width:220px;max-width:70%;height:auto;">',
+    '<img src="' + SITE + '/elaina-signature-mauve.png" alt="Elaina Price" width="220" style="display:block;width:220px;max-width:70%;height:auto;">',
     unsubscribeFooter(email, token)
   );
 }
