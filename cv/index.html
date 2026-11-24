@@ -144,10 +144,53 @@
       ul { padding-left: 18px; }
       li { margin-bottom: 18px; padding-left: 2px; }
     }
+    /* Download button, top right of the rose header */
+    .band { position: relative; }
+    .dl {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      padding: 8px 16px;
+      background: var(--brick);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+    .dl:hover { background: #8e3631; }
+    @media (max-width: 760px) {
+      .dl { top: 8px; right: 8px; padding: 6px 10px; font-size: 10px; }
+    }
+
     @media print {
-      body { background: #fff; }
-      .back { display: none; }
-      .doc { box-shadow: none; }
+      @page { size: letter; margin: 0; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { background: #fff; font-size: 14px; }
+      .back, .dl { display: none; }
+      .doc {
+        box-shadow: none;
+        max-width: none;
+        min-height: 0;
+        grid-template-columns: 230px 1fr;
+        background: linear-gradient(to right, var(--slate) 230px, var(--paper) 230px);
+      }
+      .side { background: transparent; padding: 48px 22px 30px; }
+      .side hr { margin: 26px -22px; }
+      .badge { width: 150px; height: 150px; font-size: 24px; margin-bottom: 34px; }
+      .side a { font-size: 14px; }
+      .side h2 { font-size: 18px; }
+      .edu { font-size: 14px; }
+      .band { padding: 44px 36px 40px; }
+      .band h1 { font-size: 36px; }
+      .main { padding: 30px 36px 40px; }
+      .main h2 { font-size: 17px; margin-bottom: 14px; }
+      .main p { margin-bottom: 14px; }
+      .rule { margin: 28px 0 26px; }
+      li { margin-bottom: 14px; break-inside: avoid; }
     }
   </style>
 </head>
@@ -170,7 +213,10 @@
     </aside>
 
     <main>
-      <div class="band"><h1>Elaina D. Price</h1></div>
+      <div class="band">
+        <a class="dl" href="elaina-price-cv.pdf" download="Elaina-D-Price-CV.pdf">Download PDF</a>
+        <h1>Elaina D. Price</h1>
+      </div>
       <div class="main">
         <h2>Summary</h2>
         <p>Business and real estate leader with 20+ years of experience across corporate leadership, law firms, real estate, energy, and mission-critical infrastructure.</p>
